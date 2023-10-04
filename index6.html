@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+        <h1>Kontaktformular</h1>
+        <p>Haben wir ihr Interesse geweckt?Kontaktieren sie uns gerne.
+        </p>
+        
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="betreff">Betreff:</label>
+            <input type="text" name="betreff" id="betreff" required>
+
+            <label for="naricht">Naricht</label>
+            <textarea name="naricht" cols="30" rows="10" required></textarea>
+            
+            <input type="submit" value="Senden">
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+    Host : "smtp.gmail.com",
+    Username : "maxirinkel@gmail.com",
+    Password : "Luvre47Gropius",
+    To : 'maxirinkel@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "Neuer Kunde",
+    Body : "Name: " + document.getElementById("name").value
+                    + "<br> Email:" + document.getElementById("email").value
+                    + "<br> Betreff:" + document.getElementById("betreff").value
+                    + "<br> Naricht:" + document.getElementById("naricht").value
+
+
+
+                }).then(           
+  message => alert(message)
+);
+        }
+    </script>
+</body>
+</html>
